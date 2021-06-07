@@ -1,5 +1,5 @@
 use algebra::{curves::AffineCurve, One};
-use curves::pasta::{
+use mina_curves::pasta::{
     fp::Fp,
     fq::Fq,
     pallas::{Affine as GAffine, PallasParameters},

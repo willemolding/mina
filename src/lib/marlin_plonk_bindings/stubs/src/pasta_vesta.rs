@@ -1,11 +1,11 @@
 use algebra::{
     curves::{AffineCurve, ProjectiveCurve},
-    pasta::{
-        vesta::{Affine as GAffine, Projective as GProjective},
-        fp::Fp,
-        fq::Fq,
-    },
     One, UniformRand,
+};
+use mina_curves::pasta::{
+    fp::Fp,
+    fq::Fq,
+    vesta::{Affine as GAffine, Projective as GProjective},
 };
 use rand::rngs::StdRng;
 

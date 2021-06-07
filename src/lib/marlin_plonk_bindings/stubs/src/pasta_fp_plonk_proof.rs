@@ -1,11 +1,8 @@
-use algebra::{
-    curves::AffineCurve,
-    pasta::{
-        vesta::{Affine as GAffine, VestaParameters},
-        fp::Fp,
-        fq::Fq,
-    },
-    One,
+use algebra::{curves::AffineCurve, One};
+use mina_curves::pasta::{
+    fp::Fp,
+    fq::Fq,
+    vesta::{Affine as GAffine, VestaParameters},
 };
 
 use plonk_circuits::scalars::ProofEvaluations as DlogProofEvaluations;

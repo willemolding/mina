@@ -1,16 +1,13 @@
 use crate::caml_pointer;
 use crate::index_serialization;
+use crate::pasta_fp_plonk_index::CamlPastaFpPlonkIndexPtr;
+use crate::pasta_fp_urs::CamlPastaFpUrs;
 use crate::plonk_verifier_index::{
     CamlPlonkDomain, CamlPlonkVerificationEvals, CamlPlonkVerificationShifts,
     CamlPlonkVerifierIndex,
 };
-use crate::pasta_fp_plonk_index::CamlPastaFpPlonkIndexPtr;
-use crate::pasta_fp_urs::CamlPastaFpUrs;
-use algebra::{
-    curves::AffineCurve,
-    pasta::{vesta::Affine as GAffine, pallas::Affine as GAffineOther, fp::Fp},
-    One,
-};
+use algebra::{curves::AffineCurve, One};
+use mina_curves::pasta::{fp::Fp, pallas::Affine as GAffineOther, vesta::Affine as GAffine};
 
 use ff_fft::{EvaluationDomain, Radix2EvaluationDomain as Domain};
 

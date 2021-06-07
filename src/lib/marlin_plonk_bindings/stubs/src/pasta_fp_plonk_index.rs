@@ -1,8 +1,8 @@
 #[allow(unused_imports)]
-use algebra::pasta::{
-    vesta::{Affine as GAffine, VestaParameters},
-    pallas::Affine as GAffineOther,
+use mina_curves::pasta::{
     fp::Fp,
+    pallas::Affine as GAffineOther,
+    vesta::{Affine as GAffine, VestaParameters},
 };
 
 use plonk_circuits::constraints::ConstraintSystem;
@@ -21,8 +21,8 @@ use std::{
 };
 
 use crate::index_serialization;
-use crate::plonk_gate::{CamlPlonkCol, CamlPlonkGate, CamlPlonkWire};
 use crate::pasta_fp_urs::CamlPastaFpUrs;
+use crate::plonk_gate::{CamlPlonkCol, CamlPlonkGate, CamlPlonkWire};
 
 pub struct CamlPastaFpPlonkGateVector(Vec<Gate<Fp>>);
 pub type CamlPastaFpPlonkGateVectorPtr = ocaml::Pointer<CamlPastaFpPlonkGateVector>;
@@ -150,8 +150,7 @@ pub fn caml_pasta_fp_plonk_index_create(
 
     let (endo_q, _endo_r) = commitment_dlog::srs::endos::<GAffineOther>();
     let cs =
-        match ConstraintSystem::<Fp>::create(gates, oracle::pasta::fp::params(), public as usize)
-        {
+        match ConstraintSystem::<Fp>::create(gates, oracle::pasta::fp::params(), public as usize) {
             None => Err(ocaml::Error::failwith(
                 "caml_pasta_fp_plonk_index_create: could not create constraint system",
             )
