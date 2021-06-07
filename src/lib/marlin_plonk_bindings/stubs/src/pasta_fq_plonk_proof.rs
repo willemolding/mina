@@ -1,11 +1,8 @@
-use algebra::{
-    curves::AffineCurve,
-    pasta::{
-        pallas::{Affine as GAffine, PallasParameters},
-        fp::Fp,
-        fq::Fq,
-    },
-    One,
+use algebra::{curves::AffineCurve, One};
+use curves::pasta::{
+    fp::Fp,
+    fq::Fq,
+    pallas::{Affine as GAffine, PallasParameters},
 };
 
 use plonk_circuits::scalars::ProofEvaluations as DlogProofEvaluations;
