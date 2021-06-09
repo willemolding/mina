@@ -36,7 +36,7 @@ let andThenRunInDocker : List Text -> Text -> List Cmd.Type =
     [ Mina.fixPermissionsCommand ] # (commands environment) # [
       Cmd.runInDocker
         (Cmd.Docker::{ image = (../Constants/ContainerImages.dhall).minaToolchain, extraEnv = environment })
-        (unpackageScript ++ " && " ++ "eval \\\$(opam env)" ++ " && " ++ innerScript)
+        (unpackageScript ++ " && " ++ ''eval $(opam env)'' ++ " && " ++ innerScript)
     ]
 
 in
