@@ -73,3 +73,13 @@ external deep_copy : t -> t = "caml_pasta_fq_deep_copy"
 let%test "deep_copy" =
   let x = random () in
   deep_copy x = x
+
+(* implementation of sexp *)
+
+let sexp_of_t x = Sexplib.Sexp.Atom (to_string x)
+
+let t_of_sexp = function
+  | Sexplib.Sexp.Atom s ->
+      of_string s
+  | _ ->
+      raise (Invalid_argument "Zexe_backend_common.Field(_).t_of_sexp")
