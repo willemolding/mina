@@ -209,6 +209,18 @@ reformat-diff:
 	ocamlformat --doc-comments=before --inplace $(shell git status -s | cut -c 4- | grep '\.mli\?$$' | while IFS= read -r f; do stat "$$f" >/dev/null 2>&1 && echo "$$f"; done) || true
 
 check-format:
+	$(info INFO PATH $(PATH))
+	ls -a /home/opam
+	ls -a /home/opam/.opam
+	#ls -a /home/opam/.opam/4.07/bin/ | grep "dun"
+	ls -aC /home/opam/.opam/4.07/bin/
+	echo $(PWD)
+	[ -f "/home/opam/.opam/4.07/bin/dune" ] && echo "The file exists" || echo "The file does not exist"
+	ls -a /workdir/
+	ls -a /home/
+	ls -a /
+	ls -a _opam
+	ls -a _opam/bin/
 	$(WRAPAPP) dune exec --profile=$(DUNE_PROFILE) src/app/reformat/reformat.exe -- -path . -check
 
 check-snarky-submodule:
